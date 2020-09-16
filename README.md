@@ -1,8 +1,8 @@
 # Blog
 Example of building a Blog.
 
-[![Python 3](https://pyup.io/repos/github/rogeriodelphi/myste/python-3-shield.svg)](https://pyup.io/repos/github/rogeriodelphi/mysite/)
-
+[![Updates](https://pyup.io/repos/github/rogeriodelphi/mysite/shield.svg)](https://pyup.io/repos/github/rogeriodelphi/mysite/)
+[![Python 3](https://pyup.io/repos/github/rogeriodelphi/mysite/python-3-shield.svg)](https://pyup.io/repos/github/rogeriodelphi/mysite/)
 Installation steps::
 ```console
 pip install - requirements-dev.txt
