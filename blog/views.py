@@ -5,7 +5,7 @@ from django.shortcuts import render, get_object_or_404
 from django.views.generic import ListView
 
 from .forms import EmailPostForm, CommentForm
-from .models import Post, Comment
+from .models import Post
 
 
 def post_list(request):
@@ -32,7 +32,7 @@ def post_detail(request, year, month, day, post):
                              publish__year=year,
                              publish__month=month,
                              publish__day=day)
-    #Lista dos comentários ativos para esta postagem
+    # Lista dos comentários ativos para esta postagem
     comments = post.comments.filter(active=True)
 
     new_comment = None
