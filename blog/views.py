@@ -4,8 +4,8 @@ from django.core.paginator import Paginator, EmptyPage, \
 from django.shortcuts import render, get_object_or_404
 from django.views.generic import ListView
 
-from .forms import EmailPostForm
-from .models import Post
+from .forms import EmailPostForm, CommentForm
+from .models import Post, Comment
 
 
 def post_list(request):
@@ -32,9 +32,29 @@ def post_detail(request, year, month, day, post):
                              publish__year=year,
                              publish__month=month,
                              publish__day=day)
-    return render(request,
-                  'blog/post/detail.html',
-                  {'post': post})
+    #Lista dos comentários ativos para esta postagem
+    comments = post.comments.filter(active=True)
+
+    new_comment = None
+
+    if request.method == 'POST':
+        # Um comentário foi postado
+        comment_form = CommentForm(data=request.POST)
+        if comment_form.is_valid():
+            # Cria o objeto Comment, mas não o salva ainda no BD
+            new_comment = comment_form.save(commit=False)
+            # Atribui a postagem atual ao comentário
+            new_comment.post = post
+            # Salva o comentário no BD
+            new_comment.save()
+        else:
+            comment_form = CommentForm()
+        return render(request,
+                      'blog/post/detail.html',
+                      {'post': post,
+                       'comments': comments,
+                       'new_comment': new_comment,
+                       'comment_form': comment_form})
 
 
 class PostListView(ListView):
@@ -53,16 +73,17 @@ def post_share(request, post_id):
         # Formulário foi submetido
         form = EmailPostForm(request.POST)
         if form.is_valid():
-            # Os campos do formulário passaram na validação
+            # Form fields passed validation
             cd = form.cleaned_data
             post_url = request.build_absolute_uri(post.get_absolute_url())
             subject = f"{cd['name']} recommends you read {post.title}"
             message = f"Read {post.title} at {post_url}\n\n" \
                       f"{cd['name']}\'s comments: {cd['comments']}"
-            send_mail(subject, message, 'rbmdesenvolvimento@gmail.com', [cd['to']])
+            send_mail(subject, message, 'admin@myblog.com', [cd['to']])
             sent = True
-    else:
-        form = EmailPostForm()
-    return render(request, 'blog/post/share.html', {'post': post,
-                                                    'form': form,
-                                                    'sent': sent})
+
+        else:
+            form = EmailPostForm()
+        return render(request, 'blog/post/share.html', {'post': post,
+                                                        'form': form,
+                                                        'sent': sent})
