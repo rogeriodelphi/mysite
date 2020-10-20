@@ -14,7 +14,6 @@
             Share this post
         </a>
     </p>
-
     <h2>Similar posts</h2>
     {% for post in similar_posts %}
         <p>
@@ -23,9 +22,6 @@
     {% empty %}
         There are no similar posts yet.
     {% endfor %}
-
-
-
     {% with comments.count as total_comments %}
         <h2>
             {{ total_comments }} comment{{ total_comments|pluralize }}
