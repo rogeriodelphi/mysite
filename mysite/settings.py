@@ -99,10 +99,11 @@ DATABASES = {
 """
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'blog',
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': 'containers-us-west-114.railway.app',
         'USER': 'postgres',
-        'PASSWORD': '123456',
+        'PASSWORD': 'S0YppGBLgETYg4EWuaeo',
+        'PORT': '7524',
     }
 }
 """
