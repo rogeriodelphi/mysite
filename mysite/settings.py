@@ -24,7 +24,7 @@ SECRET_KEY = '*0#(j=7!&0m*%&$0&w2u6ju7$ugbip71d-&)-9zcnsd#oc#*w3'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['mysite-production-5b98.up.railway.app', '127.0.0.1', 'localhost']
+ALLOWED_HOSTS = ['mysite-production-592c.up.railway.app/', '127.0.0.1', 'localhost']
 
 SITE_ID = 1
 
