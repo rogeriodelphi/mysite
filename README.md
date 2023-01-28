@@ -7,7 +7,7 @@ Example of building a Blog.
 
 Installation steps::
 ```console
-pip install -r requirements.txt
+pip install - requirements.txt
 ```
 
 To check the quality:
