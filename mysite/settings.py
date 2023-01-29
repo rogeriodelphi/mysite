@@ -42,7 +42,6 @@ INSTALLED_APPS = [
     'django.contrib.sites',
     'django.contrib.sitemaps',
     'django.contrib.postgres',
-    'django.contrib.staticfiles',
     'whitenoise.runserver_nostatic',
 ]
 
@@ -157,9 +156,11 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 STATICFILES_STORAGE="whitenoise.storage.CompressedManifestStaticFilesStorage"
 
 print('BASE_DIR: ', {BASE_DIR})
+print('STATIC_URL: ', STATIC_URL)
 print('STATIC_ROOT: ', {STATIC_ROOT})
-print('STATICFILES_DIRS: ', {STATICFILES_DIRS})
+# print('STATICFILES_DIRS: ', {STATICFILES_DIRS})
 print('STATICFILES_STORAGE: ', STATICFILES_STORAGE)
+
 
 # E-mail
 # EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
