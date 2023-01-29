@@ -1,5 +1,4 @@
 from django.contrib.postgres.search import SearchVector, SearchQuery, SearchRank
-from django.contrib.postgres.search import TrigramSimilarity
 from django.core.mail import send_mail
 from django.core.paginator import Paginator, EmptyPage, \
     PageNotAnInteger
@@ -124,7 +123,6 @@ def post_search(request):
                 search=search_vector,
                 rank=SearchRank(search_vector, search_query)
             ).filter(search=search_query).order_by('-rank')
-
 
     return render(request,
                   'blog/post/search.html',
