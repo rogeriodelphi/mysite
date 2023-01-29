@@ -22,7 +22,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = '*0#(j=7!&0m*%&$0&w2u6ju7$ugbip71d-&)-9zcnsd#oc#*w3'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = ['mysite-production-592c.up.railway.app', '127.0.0.1', 'localhost']
 
@@ -143,16 +143,11 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.1/howto/static-files/
 
 STATIC_URL = '/static/'
-STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+STATICFILES_DIRS = (os.path.join(BASE_DIR, 'templates/static'),)
+STATIC_ROOT = os.path.join('static')
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
-
-# Em desenvolvimento ficam aqui - produção ficam no STATIC_ROOT
-
-STATICFILES_DIRS = (
-    os.path.join(BASE_DIR, 'templates/staticfiles'),
-)
 
 STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
 
