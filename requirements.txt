@@ -2,13 +2,13 @@ asgiref==3.5.2
 Django==3.2.9
 pytz==2020.1
 sqlparse==0.3.1
-zipp==3.1.0
+zipp==3.13.0
 flake8==3.8.3
 importlib-metadata==4.4.0
 mccabe==0.6.1
 pycodestyle==2.6.0
 pyflakes==2.2.0
-zipp==3.1.0
+zipp==3.13.0
 gunicorn==20.1.0
 psycopg2==2.9.5
 django-taggit==3.1.0
